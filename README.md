@@ -282,7 +282,7 @@ webView.setWebViewClient(new WebViewSampleClient());
 https://github.com/katushhiaa/PR6/assets/113555695/57b3b975-56d6-4553-86f3-37a5d6d62d26
 
 ### Завдання 3 «Використання ListView»
-1. arrays.xml
+1. У values створити файл arrays.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -302,3 +302,53 @@ https://github.com/katushhiaa/PR6/assets/113555695/57b3b975-56d6-4553-86f3-37a5d
     </string-array>
 </resources>
 ```
+2. Створити файл list_item.xml з наступним вмістом
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<TextView	xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    android:padding="10dp" android:textSize="16sp" >
+</TextView>
+
+```
+3. Модифікувати метод onCreate та додати оброник подій в якості якого буде використовуватися анонімний об'єкт класу OnItemClickListener.
+   
+```java
+package com.example.listviewsample;
+
+import android.app.ListActivity;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends ListActivity {
+
+    @Override
+    public	void	onCreate(Bundle	savedInstanceState)	{
+        super.onCreate(savedInstanceState);
+        Resources r = getResources();
+        String[]	stationsArray	=	r.getStringArray(R.array.stations);
+        ArrayAdapter<String> aa = new ArrayAdapter<String>(this, R.layout.list_item, stationsArray);
+        setListAdapter(aa);
+        ListView lv = getListView();
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                CharSequence text = ((TextView) v).getText();
+                int duration = Toast.LENGTH_LONG;
+                Toast.makeText(getApplicationContext(), text, duration).show();
+            }
+        });
+    }
+}
+```
+
+4. Результат виконання програми
+
+https://github.com/katushhiaa/PR6/assets/113555695/b0dab43d-2015-488d-b6bd-97243870890d
+
