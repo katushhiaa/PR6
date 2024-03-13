@@ -216,7 +216,7 @@ https://github.com/katushhiaa/PR6/assets/113555695/435d4f10-8230-4d14-b7b3-1b86f
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        webView = findViewById(R.id.webview); // Initializing webView
+        webView = findViewById(R.id.webview); 
         webView.setWebViewClient(new MyWebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("https://www.google.com.ua");
